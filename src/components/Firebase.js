@@ -1,4 +1,4 @@
-import { initalizeApp } from "firebase/app";
+import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 // import { getAnalytics } from "firebase/analytics";
 
@@ -12,7 +12,7 @@ const firebaseConfig = {
   measurementId: "G-1H3VLHK251",
 };
 
-const app = initalizeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 export { app, db };
