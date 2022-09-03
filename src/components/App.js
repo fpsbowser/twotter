@@ -48,12 +48,12 @@ function App() {
   return (
     <div className="App">
       <h2>App</h2>
+      <button onClick={handleSignOut}>Sign Out</button>
       {signedIn ? (
         <Home user={user} username={username} />
       ) : (
         <Login username={username} setUsername={setUsername} />
       )}
-      <button onClick={handleSignOut}>Sign Out</button>
     </div>
   );
 }
