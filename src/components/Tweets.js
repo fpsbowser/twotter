@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-
+import "../style/tweets.css";
 import { collection, onSnapshot, query, orderBy } from "firebase/firestore";
 import { db } from "./Firebase";
 
 function Tweets(props) {
-  const { setUserId, setViewProfile } = props;
+  const { setUserId, setViewProfile, setProfileUsername } = props;
   const [tweets, setTweets] = useState([]);
 
   useEffect(() => {
-    // listen to firestore for changes to update tweet state
+    // listen to firestore for changes to update tweet state array
     const q = query(collection(db, "tweets"), orderBy("timestamp", "desc"));
     const snap = onSnapshot(q, (querySnapshot) => {
       const currentTweets = [];
@@ -18,24 +18,40 @@ function Tweets(props) {
       });
     });
   }, []);
-  // console.log(tweets);
 
   function handleClick(e) {
-    console.log(e.target.id);
+    setProfileUsername(e.target.innerHTML);
     setUserId(e.target.id);
     setViewProfile(true);
   }
 
   return (
     <div className="tweet-container">
+      <div className="tweet-container-header">
+        <h2 className="tweet-container-header-text">Home</h2>
+      </div>
       {tweets.map((tweet) => {
         return (
           <div className="tweet-card" key={tweet.id}>
-            <h3>{tweet.data().tweet}</h3>
-            <h5 onClick={handleClick} id={tweet.data().ownerId}>
-              {tweet.data().username}
-            </h5>
-            <h5>{`${new Date(tweet.data().timestamp.seconds * 1000)}`}</h5>
+            <div className="tweet-header">
+              <img
+                src={require("../assets/account-circle-outline.png")}
+                alt="profile pic"
+                id="tweet-profile-pic"
+              />
+              <p
+                className="tweet-owner"
+                onClick={handleClick}
+                id={tweet.data().ownerId}
+              >
+                {tweet.data().username}
+              </p>
+            </div>
+
+            <p className="tweet-text">{tweet.data().tweet}</p>
+            <p className="tweet-date">{`${new Date(
+              tweet.data().timestamp.seconds * 1000
+            )}`}</p>
           </div>
         );
       })}
@@ -44,12 +60,3 @@ function Tweets(props) {
 }
 
 export default Tweets;
-
-// fetchTweets();
-// const fetchTweets = async () => {
-//   const querySnapshot = await getDocs(collection(db, "tweets"));
-//   querySnapshot.forEach((doc) => {
-//     console.log(doc.id, "=>", doc.data().tweet);
-//     setTweets((prevState) => [...prevState, doc]);
-//   });
-// };
