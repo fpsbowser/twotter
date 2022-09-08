@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,200;0,500;0,600;0,700;1,100;1,200;1,500;1,600;1,700&family=Quicksand:wght@300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "JetBrains Mono", monospace;
+}
+
+body {
+  /* background-color: rgb(34, 60, 82); */
+  background-color: black;
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  height: 3vh;
+  border-bottom: 2px solid white;
+}
+
+.home-container {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr 1fr;
+}
+
+.profile-container {
+  width: 100%;
+}
+
+.user-info-container {
+  padding: 0.5rem;
+}
+
+.user-info {
+  display: grid;
+  color: white;
+  padding: 1rem;
+  border: 2px solid black;
+  border-radius: 20px;
+  gap: 1rem;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  background-color: rgb(13, 13, 13);
+}
+
+.links-container {
+  display: grid;
+  gap: 2rem;
+  color: white;
+  align-items: center;
+  padding: 1rem;
+}
+
+.home-link,
+.profile-link {
+  display: flex;
+  padding: 1rem;
+  border-radius: 20px;
+  font-size: 1.5rem;
+}
+
+#home-link-dot {
+  padding-right: 1rem;
+  scale: 1.1;
+  width: 30px;
+}
+
+.home-link:hover,
+.profile-link:hover {
+  background-color: rgb(34, 34, 34);
+}
+
+.greeting {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.user-email {
+  font-size: 0.7rem;
+  font-weight: 200;
+  text-align: end;
+}
+
+#signout-icon:hover {
+  scale: 1.2;
+}
+
+.compose-container {
+  height: 100%;
+  padding: 0.5rem;
+}
+
+#compose-form {
+  display: grid;
+}
+
+#compose-textarea {
+  font-size: 0.8rem;
+  min-height: 100px;
+  resize: none;
+  margin-bottom: 1rem;
+}
+
+.compose-btn-container {
+  display: flex;
+  color: white;
+  border-radius: 20px;
+  max-height: 2.5rem;
+  align-items: center;
+}
+
+.compose-btn-container:hover {
+  /* background-color: rgb(76, 90, 102); */
+  background-color: rgb(34, 34, 34);
+}
+
+#compose-logo {
+  padding-right: 1rem;
+}
+
+#tweet-submit {
+  color: black;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
