@@ -4,7 +4,7 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 function Compose() {
   const [tweet, setTweet] = useState("");
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(false);
 
   function toggleTextarea() {
     setToggle(!toggle);
@@ -33,25 +33,43 @@ function Compose() {
 
   if (toggle) {
     return (
-      <div>
-        <button onClick={toggleTextarea}>Toggle</button>
-        <form onSubmit={onSubmit}>
+      <div className="compose-container">
+        <div className="compose-btn-container" onClick={toggleTextarea}>
+          <img
+            src={require("../assets/minus-circle.png")}
+            alt="compose logo"
+            id="compose-logo"
+            onClick={toggleTextarea}
+          />
+          <p>What's on your mind?</p>
+        </div>
+        <form onSubmit={onSubmit} id="compose-form">
           <textarea
             name="tweet"
-            cols="40"
-            rows="10"
+            id="compose-textarea"
+            maxLength={"160"}
             value={tweet}
             onChange={handleChange}
-            placeholder={"surely your tweet will be necessary, right?"}
+            placeholder={"surely your twot will be necessary, right?"}
           ></textarea>
-          <button type="submit">Submit</button>
+          <button id="tweet-submit" type="submit">
+            Submit
+          </button>
         </form>
       </div>
     );
   } else {
     return (
-      <div>
-        <button onClick={toggleTextarea}>Toggle</button>
+      <div className="compose-container">
+        <div className="compose-btn-container" onClick={toggleTextarea}>
+          <img
+            src={require("../assets/plus-circle.png")}
+            alt="compose logo"
+            id="compose-logo"
+            onClick={toggleTextarea}
+          />
+          <p>New twot</p>
+        </div>
       </div>
     );
   }
