@@ -8,7 +8,7 @@ import {
 import { useState, useEffect } from "react";
 import Home from "./Home";
 import Login from "./Login";
-import SignUp from "./SignUp";
+import "../style/app.css";
 
 function App() {
   // let test = true;
@@ -47,10 +47,12 @@ function App() {
 
   return (
     <div className="App">
-      <h2>App</h2>
-      <button onClick={handleSignOut}>Sign Out</button>
+      <div className="header">
+        <img src={require("../assets/bird.png")} alt="twotter logo" id="logo" />
+        {/* <button onClick={handleSignOut}>Sign Out</button> */}
+      </div>
       {signedIn ? (
-        <Home user={user} username={username} />
+        <Home user={user} username={username} handleSignOut={handleSignOut} />
       ) : (
         <Login username={username} setUsername={setUsername} />
       )}
