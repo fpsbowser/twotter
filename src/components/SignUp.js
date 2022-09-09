@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import "../style/signup.css";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -49,28 +50,76 @@ const SignUp = (props) => {
   }
 
   return (
-    <div className="signup-form">
-      <form onSubmit={onSubmit}>
+    <div className="main-container">
+      <div className="signup-container">
+        <div className="logo-container">
+          <img
+            src={require("../assets/bird.png")}
+            alt="logo"
+            id="signup-logo"
+          />
+          <h1>Twotter!</h1>
+        </div>
         <h1>Sign Up</h1>
-        <label>
-          Username:
-          <input type="test" value={username} onChange={handleUsername} />
-        </label>
-
-        <label>
-          Email:
-          <input type="text" value={email} onChange={handleEmail} />
-        </label>
-
-        <label>
-          Password:
-          <input type="password" value={password} onChange={handlePassword} />
-        </label>
-        <button onClick={handleLogin}>Login</button>
-        <button type="submit">Submit</button>
-      </form>
+        <form onSubmit={onSubmit} className="signup-form">
+          <label id="username-label">
+            Username:
+            <input type="test" value={username} onChange={handleUsername} />
+          </label>
+          <label id="email-label">
+            Email:
+            <input type="text" value={email} onChange={handleEmail} />
+          </label>
+          <label id="password-label">
+            Password:
+            <input type="password" value={password} onChange={handlePassword} />
+          </label>
+        </form>
+        <button type="submit" id="signup-btn">
+          Sign Up
+        </button>
+        <button onClick={handleLogin} id="login-btn">
+          Have an Account?
+        </button>
+      </div>
     </div>
   );
 };
 
 export default SignUp;
+/*
+<div className="main-container">
+        <div className="login-container">
+          <div className="logo-container">
+            <img
+              src={require("../assets/bird.png")}
+              alt="logo"
+              id="login-logo"
+            />
+          </div>
+
+          <h1>Twotter!</h1>
+          <form onSubmit={onSubmit} className="login-form">
+            <label id="email-label">
+              Email:
+              <input type="text" value={email} onChange={handleEmail} />
+            </label>
+            <label id="password-label">
+              Password:
+              <input
+                type="password"
+                value={password}
+                onChange={handlePassword}
+              />
+            </label>
+          </form>
+
+          <button type="submit" id="login-btn">
+            LOGIN
+          </button>
+          <button onClick={handleSignUp} id="signup-btn">
+            Create New Account
+          </button>
+        </div>
+      </div>
+*/

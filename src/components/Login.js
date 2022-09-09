@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import SignUp from "./SignUp";
+import "../style/login.css";
 
 function Login(props) {
   const [email, setEmail] = useState("");
@@ -34,27 +35,46 @@ function Login(props) {
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
       });
-    console.log(email);
-    console.log(password);
+    // console.log(email);
+    // console.log(password);
   }
 
   if (hasAccount) {
     return (
-      <div className="login-form">
-        <h1>Login</h1>
-        <form onSubmit={onSubmit}>
-          <label>
-            Email:
-            <input type="text" value={email} onChange={handleEmail} />
-          </label>
+      <div className="main-container">
+        <div className="login-container">
+          <div className="logo-container">
+            <img
+              src={require("../assets/bird.png")}
+              alt="logo"
+              id="login-logo"
+            />
+            <h1>Twotter!</h1>
+          </div>
 
-          <label>
-            Password:
-            <input type="password" value={password} onChange={handlePassword} />
-          </label>
-          <button onClick={handleSignUp}>Sign Up</button>
-          <button type="submit">Submit</button>
-        </form>
+          <h1>Login</h1>
+          <form onSubmit={onSubmit} className="login-form">
+            <label id="email-label">
+              Email:
+              <input type="text" value={email} onChange={handleEmail} />
+            </label>
+            <label id="password-label">
+              Password:
+              <input
+                type="password"
+                value={password}
+                onChange={handlePassword}
+              />
+            </label>
+          </form>
+
+          <button type="submit" id="login-btn">
+            LOGIN
+          </button>
+          <button onClick={handleSignUp} id="signup-btn">
+            Create New Account
+          </button>
+        </div>
       </div>
     );
   } else {
