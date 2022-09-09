@@ -1,4 +1,4 @@
-import { app, cdb, auth } from "./Firebase";
+import { auth } from "./Firebase";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useState, useEffect } from "react";
 import Home from "./Home";
