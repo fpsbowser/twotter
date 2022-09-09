@@ -35,8 +35,6 @@ function Login(props) {
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
       });
-    // console.log(email);
-    // console.log(password);
   }
 
   if (hasAccount) {

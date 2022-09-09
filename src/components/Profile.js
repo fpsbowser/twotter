@@ -6,7 +6,6 @@ function Profile(props) {
   const { userId, user, profileUsername, setSignedInUser, signedInUser } =
     props;
   const [tweets, setTweets] = useState([]);
-  // const [username, setUsername] = useState("");
 
   async function fetchUsersTweets() {
     const tweetRef = collection(db, "tweets");

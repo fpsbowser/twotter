@@ -3,8 +3,6 @@ import React from "react";
 function Links(props) {
   const { viewProfile, setViewProfile, signedInUser, showProfile } = props;
 
-  // const [signedInUser, setSignedInUser] = useState(false);
-
   function handleclick() {
     if (viewProfile) {
       setViewProfile(false);

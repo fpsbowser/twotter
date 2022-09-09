@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../style/signup.css";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -30,7 +29,6 @@ const SignUp = (props) => {
     setHasAccount(!hasAccount);
   }
 
-  // on account creation, app component renders before changing displayName
   function onSubmit(e) {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
@@ -75,7 +73,7 @@ const SignUp = (props) => {
             <input type="password" value={password} onChange={handlePassword} />
           </label>
         </form>
-        <button type="submit" id="signup-btn">
+        <button type="submit" id="signup-btn" onClick={onSubmit}>
           Sign Up
         </button>
         <button onClick={handleLogin} id="login-btn">
@@ -87,39 +85,3 @@ const SignUp = (props) => {
 };
 
 export default SignUp;
-/*
-<div className="main-container">
-        <div className="login-container">
-          <div className="logo-container">
-            <img
-              src={require("../assets/bird.png")}
-              alt="logo"
-              id="login-logo"
-            />
-          </div>
-
-          <h1>Twotter!</h1>
-          <form onSubmit={onSubmit} className="login-form">
-            <label id="email-label">
-              Email:
-              <input type="text" value={email} onChange={handleEmail} />
-            </label>
-            <label id="password-label">
-              Password:
-              <input
-                type="password"
-                value={password}
-                onChange={handlePassword}
-              />
-            </label>
-          </form>
-
-          <button type="submit" id="login-btn">
-            LOGIN
-          </button>
-          <button onClick={handleSignUp} id="signup-btn">
-            Create New Account
-          </button>
-        </div>
-      </div>
-*/

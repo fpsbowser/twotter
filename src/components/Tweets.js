@@ -10,9 +10,9 @@ function Tweets(props) {
   useEffect(() => {
     // listen to firestore for changes to update tweet state array
     const q = query(collection(db, "tweets"), orderBy("timestamp", "desc"));
-    const snap = onSnapshot(q, (querySnapshot) => {
+    const unsub = onSnapshot(q, (snapshot) => {
       const currentTweets = [];
-      querySnapshot.forEach((doc) => {
+      snapshot.forEach((doc) => {
         currentTweets.push(doc);
         setTweets(currentTweets);
       });
