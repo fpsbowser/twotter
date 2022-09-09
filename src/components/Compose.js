@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { auth, db } from "./Firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 
 function Compose() {
   const [tweet, setTweet] = useState("");
@@ -17,17 +17,16 @@ function Compose() {
 
   async function onSubmit(e) {
     e.preventDefault();
-    console.log(tweet);
-    console.log(auth.currentUser.displayName);
-    // push to tweet to firestore
+    // push tweet to firestore
     const docRef = await addDoc(collection(db, "tweets"), {
       tweet: tweet,
       ownerId: auth.currentUser.uid,
       username: auth.currentUser.displayName,
-      timestamp: serverTimestamp(),
-      date: new Date(),
+      timestamp: new Date(),
+      // serverTimestamp caused crashing on new tweets
+      // date: serverTimestamp,
     });
-    console.log("doc written with id: ", docRef.id);
+    // console.log("doc written with id: ", docRef.id);
     setToggle(!toggle);
   }
 
