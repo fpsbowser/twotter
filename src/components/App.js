@@ -1,19 +1,12 @@
 import { app, cdb, auth } from "./Firebase";
-import {
-  getAuth,
-  onAuthStateChanged,
-  signOut,
-  updateProfile,
-} from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useState, useEffect } from "react";
 import Home from "./Home";
 import Login from "./Login";
 import "../style/app.css";
+import Social from "./Social";
 
 function App() {
-  // let test = true;
-  // console.log(app);
-  // console.log(db);
   const [signedIn, setSignedIn] = useState(false);
   const [user, setUser] = useState({});
   const [username, setUsername] = useState("");
@@ -21,7 +14,6 @@ function App() {
   useEffect(() => {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
-      // console.log(user);
       if (user) {
         setUser(user);
         setSignedIn(true);
@@ -30,8 +22,6 @@ function App() {
         setSignedIn(false);
       }
     });
-    // const user = auth.currentUser;
-    // user ? setSignedIn(true) : setSignedIn(false);
     console.log(signedIn);
   }, []);
 
@@ -49,13 +39,13 @@ function App() {
     <div className="App">
       <div className="header">
         <img src={require("../assets/bird.png")} alt="twotter logo" id="logo" />
-        {/* <button onClick={handleSignOut}>Sign Out</button> */}
       </div>
       {signedIn ? (
         <Home user={user} username={username} handleSignOut={handleSignOut} />
       ) : (
         <Login username={username} setUsername={setUsername} />
       )}
+      <Social />
     </div>
   );
 }
