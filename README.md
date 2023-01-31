@@ -10,6 +10,6 @@ The goal of this project was to replicate a website people use everyday. While I
 
 This project utilizes React on the frontend and Firebase as the backend.
 
-HTML/CSS/JavaScript/React Library/Firebase
+HTML/CSS/JavaScript/React/Firebase
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
